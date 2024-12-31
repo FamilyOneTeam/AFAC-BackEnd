@@ -1,7 +1,5 @@
 package com.AFAC_BackEnd.AFAC.DTO;
 
-package cl.chile.somosafac.dto;
-
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
@@ -34,14 +32,13 @@ public class FichaInfanteDTO {
     private BigDecimal ingresoInfante;
 
     @Min(value = 0, message = "La edad no puede ser negativa")
-    private Integer edadNna;
+    private Integer edad;
 
-    private String rangoEdadNna;
+    private String genero;
 
-    private String sexoNna;
+    private String nacionalidad;
 
-    private String nacionalidadNna;
-
+    // TODO: pasar a tipo datatime
     private BigDecimal ingresoAfac;
 }
 
