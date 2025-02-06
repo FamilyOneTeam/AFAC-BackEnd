@@ -1,4 +1,4 @@
-package com.AFAC_BackEnd.AFAC.mapper;
+package cl.somosafac.afacbackend.mapper;
 
 import com.AFAC_BackEnd.AFAC.DTO.NotificacionesDTO;
 import com.AFAC_BackEnd.AFAC.entity.NotificacionesEntity;

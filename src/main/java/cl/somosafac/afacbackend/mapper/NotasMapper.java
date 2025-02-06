@@ -1,4 +1,4 @@
-package com.AFAC_BackEnd.AFAC.mapper;
+package cl.somosafac.afacbackend.mapper;
 
 import com.AFAC_BackEnd.AFAC.DTO.NotasDTO;
 import com.AFAC_BackEnd.AFAC.entity.FichaFamiliasEntity;

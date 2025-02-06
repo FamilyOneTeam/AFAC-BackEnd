@@ -1,4 +1,4 @@
-package com.AFAC_BackEnd.AFAC.mapper;
+package cl.somosafac.afacbackend.mapper;
 
 import com.AFAC_BackEnd.AFAC.DTO.UsuarioDTO;
 import com.AFAC_BackEnd.AFAC.entity.UsuarioEntity;
