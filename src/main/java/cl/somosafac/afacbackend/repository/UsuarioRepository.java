@@ -1,4 +1,4 @@
-package com.AFAC_BackEnd.AFAC.repository;
+package cl.somosafac.afacbackend.repository;
 
 import com.AFAC_BackEnd.AFAC.entity.UsuarioEntity;
 import com.AFAC_BackEnd.AFAC.security.Role;

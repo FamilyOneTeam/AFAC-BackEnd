@@ -1,5 +1,5 @@
 
-package com.AFAC_BackEnd.AFAC.repository;
+package cl.somosafac.afacbackend.repository;
 
 import com.AFAC_BackEnd.AFAC.entity.FichaFamiliasEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
