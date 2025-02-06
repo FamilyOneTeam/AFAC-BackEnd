@@ -1,4 +1,4 @@
-package com.AFAC_BackEnd.AFAC.controller;
+package cl.somosafac.afacbackend.controller;
 
 import com.AFAC_BackEnd.AFAC.DTO.NotificacionesDTO;
 import com.AFAC_BackEnd.AFAC.service.NotificacionesService;

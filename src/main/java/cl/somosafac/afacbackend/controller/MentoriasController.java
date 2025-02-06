@@ -1,4 +1,4 @@
-package com.AFAC_BackEnd.AFAC.controller;
+package cl.somosafac.afacbackend.controller;
 
 import com.AFAC_BackEnd.AFAC.DTO.MentoriasDTO;
 import com.AFAC_BackEnd.AFAC.service.MentoriasService;
