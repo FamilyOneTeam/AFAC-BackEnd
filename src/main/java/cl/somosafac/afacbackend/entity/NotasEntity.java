@@ -1,4 +1,4 @@
-package com.AFAC_BackEnd.AFAC.entity;
+package cl.somosafac.afacbackend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

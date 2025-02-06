@@ -1,4 +1,4 @@
-package com.AFAC_BackEnd.AFAC.entity;
+package cl.somosafac.afacbackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
