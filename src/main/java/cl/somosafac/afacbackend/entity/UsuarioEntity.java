@@ -1,6 +1,7 @@
 package cl.somosafac.afacbackend.entity;
 
-import com.AFAC_BackEnd.AFAC.security.Role;
+
+import cl.somosafac.afacbackend.security.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,9 +1,7 @@
-package cl.somosafac.afacbackend.dto;
+package cl.somosafac.afacbackend.DTO;
 
-import com.AFAC_BackEnd.AFAC.security.Role;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -36,6 +34,7 @@ public class UsuarioDTO {
 
     private Boolean aceptarTerminos;
 
+    //TODO aca hay un error relacionado a tipos role a string reparar
     @NotNull(message = "Los roles son obligatorios")
     private Set<String> roles;
 }

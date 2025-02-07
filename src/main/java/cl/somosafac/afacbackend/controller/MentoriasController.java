@@ -1,7 +1,8 @@
 package cl.somosafac.afacbackend.controller;
 
-import com.AFAC_BackEnd.AFAC.DTO.MentoriasDTO;
-import com.AFAC_BackEnd.AFAC.service.MentoriasService;
+
+import cl.somosafac.afacbackend.DTO.MentoriasDTO;
+import cl.somosafac.afacbackend.service.MentoriasService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

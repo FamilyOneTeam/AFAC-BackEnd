@@ -1,6 +1,8 @@
 package cl.somosafac.afacbackend.service;
 
-import com.AFAC_BackEnd.AFAC.DTO.FichaInfanteDTO;
+
+import cl.somosafac.afacbackend.DTO.FichaInfanteDTO;
+
 import java.util.List;
 
 public interface FichaInfanteService {

@@ -1,7 +1,8 @@
 package cl.somosafac.afacbackend.controller;
 
-import com.AFAC_BackEnd.AFAC.DTO.NotasDTO;
-import com.AFAC_BackEnd.AFAC.service.NotasService;
+
+import cl.somosafac.afacbackend.DTO.NotasDTO;
+import cl.somosafac.afacbackend.service.NotasService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

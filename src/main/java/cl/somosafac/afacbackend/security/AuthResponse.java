@@ -1,6 +1,7 @@
 package cl.somosafac.afacbackend.security;
 
-import com.AFAC_BackEnd.AFAC.DTO.UsuarioDTO;
+
+import cl.somosafac.afacbackend.DTO.UsuarioDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

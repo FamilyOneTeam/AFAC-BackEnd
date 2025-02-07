@@ -1,10 +1,11 @@
 package cl.somosafac.afacbackend.service.impl;
 
-import com.AFAC_BackEnd.AFAC.DTO.NotificacionesDTO;
-import com.AFAC_BackEnd.AFAC.entity.NotificacionesEntity;
-import com.AFAC_BackEnd.AFAC.mapper.NotificacionesMapper;
-import com.AFAC_BackEnd.AFAC.repository.NotificacionRepository;
-import com.AFAC_BackEnd.AFAC.service.NotificacionesService;
+
+import cl.somosafac.afacbackend.DTO.NotificacionesDTO;
+import cl.somosafac.afacbackend.entity.NotificacionesEntity;
+import cl.somosafac.afacbackend.mapper.NotificacionesMapper;
+import cl.somosafac.afacbackend.repository.NotificacionRepository;
+import cl.somosafac.afacbackend.service.NotificacionesService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

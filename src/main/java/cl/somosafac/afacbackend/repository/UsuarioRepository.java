@@ -1,7 +1,7 @@
 package cl.somosafac.afacbackend.repository;
 
-import com.AFAC_BackEnd.AFAC.entity.UsuarioEntity;
-import com.AFAC_BackEnd.AFAC.security.Role;
+import cl.somosafac.afacbackend.entity.UsuarioEntity;
+import cl.somosafac.afacbackend.security.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

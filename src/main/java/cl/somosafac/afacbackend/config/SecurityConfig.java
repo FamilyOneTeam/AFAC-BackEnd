@@ -1,16 +1,19 @@
 package cl.somosafac.afacbackend.config;
 
-import com.AFAC_BackEnd.AFAC.security.JwtAuthenticationFilter;
-import com.AFAC_BackEnd.AFAC.security.JwtService;
+
+import cl.somosafac.afacbackend.security.JwtAuthenticationFilter;
+import cl.somosafac.afacbackend.security.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,8 +33,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.disable())  // Añade esta línea
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/usuarios/registro").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/api/usuarios/**").hasAuthority("ADMIN")
                         .requestMatchers("/api/familias/**").hasAuthority("ADMIN")
@@ -43,7 +48,11 @@ public class SecurityConfig {
                         .requestMatchers("/api/notificaciones/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form.permitAll())
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+                .formLogin(form -> form.disable())
+                .httpBasic(basic -> basic.disable())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();

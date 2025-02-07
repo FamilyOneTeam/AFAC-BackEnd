@@ -1,10 +1,11 @@
 package cl.somosafac.afacbackend.service.impl;
 
-import com.AFAC_BackEnd.AFAC.DTO.FichaFamiliasDTO;
-import com.AFAC_BackEnd.AFAC.entity.FichaFamiliasEntity;
-import com.AFAC_BackEnd.AFAC.mapper.FichaFamiliasMapper;
-import com.AFAC_BackEnd.AFAC.repository.FichaFamiliaRepository;
-import com.AFAC_BackEnd.AFAC.service.FichaFamiliasService;
+
+import cl.somosafac.afacbackend.DTO.FichaFamiliasDTO;
+import cl.somosafac.afacbackend.entity.FichaFamiliasEntity;
+import cl.somosafac.afacbackend.mapper.FichaFamiliasMapper;
+import cl.somosafac.afacbackend.repository.FichaFamiliaRepository;
+import cl.somosafac.afacbackend.service.FichaFamiliasService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

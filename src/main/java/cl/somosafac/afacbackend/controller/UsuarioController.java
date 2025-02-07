@@ -1,11 +1,13 @@
 package cl.somosafac.afacbackend.controller;
 
-import com.AFAC_BackEnd.AFAC.DTO.UsuarioDTO;
-import com.AFAC_BackEnd.AFAC.service.UsuarioService;
+
+import cl.somosafac.afacbackend.DTO.UsuarioDTO;
+import cl.somosafac.afacbackend.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,16 @@ public class UsuarioController {
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
+
+
+    @PostMapping("/registro")  // Cambiamos la ruta a /registro específicamente
+    @Operation(summary = "Crear un nuevo usuario", description = "Crea un nuevo usuario en el sistema")
+    @ApiResponse(responseCode = "201", description = "Usuario creado exitosamente")
+    public ResponseEntity<UsuarioDTO> crearUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        UsuarioDTO nuevoUsuario = usuarioService.crearUsuario(usuarioDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoUsuario);
+    }
+
 
     @Operation(summary = "Obtener todos los usuarios", description = "Obtiene todos los usuarios registrados en el sistema")
     @ApiResponse(responseCode = "200", description = "Usuarios obtenidos exitosamente")

@@ -1,7 +1,9 @@
 package cl.somosafac.afacbackend.mapper;
 
-import com.AFAC_BackEnd.AFAC.DTO.UsuarioDTO;
-import com.AFAC_BackEnd.AFAC.entity.UsuarioEntity;
+
+import cl.somosafac.afacbackend.DTO.UsuarioDTO;
+import cl.somosafac.afacbackend.entity.UsuarioEntity;
+import cl.somosafac.afacbackend.security.Role;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -11,7 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import com.AFAC_BackEnd.AFAC.security.Role;
+
 
 @Mapper(componentModel = "spring")
 public interface UsuarioMapper {

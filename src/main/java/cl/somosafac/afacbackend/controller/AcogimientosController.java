@@ -1,7 +1,8 @@
 package cl.somosafac.afacbackend.controller;
 
-import com.AFAC_BackEnd.AFAC.DTO.AcogimientosDTO;
-import com.AFAC_BackEnd.AFAC.service.AcogimientosService;
+
+import cl.somosafac.afacbackend.DTO.AcogimientosDTO;
+import cl.somosafac.afacbackend.service.AcogimientosService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

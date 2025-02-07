@@ -1,8 +1,9 @@
 package cl.somosafac.afacbackend.mapper;
 
-import com.AFAC_BackEnd.AFAC.DTO.MentoriasDTO;
-import com.AFAC_BackEnd.AFAC.entity.MentoriasEntity;
-import com.AFAC_BackEnd.AFAC.entity.FichaFamiliasEntity;
+
+import cl.somosafac.afacbackend.DTO.MentoriasDTO;
+import cl.somosafac.afacbackend.entity.FichaFamiliasEntity;
+import cl.somosafac.afacbackend.entity.MentoriasEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

@@ -1,6 +1,6 @@
 package cl.somosafac.afacbackend.security;
 
-import com.AFAC_BackEnd.AFAC.security.Role;
+
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,10 +1,11 @@
 package cl.somosafac.afacbackend.service.impl;
 
-import com.AFAC_BackEnd.AFAC.DTO.NotasDTO;
-import com.AFAC_BackEnd.AFAC.entity.NotasEntity;
-import com.AFAC_BackEnd.AFAC.mapper.NotasMapper;
-import com.AFAC_BackEnd.AFAC.repository.NotaRepository;
-import com.AFAC_BackEnd.AFAC.service.NotasService;
+
+import cl.somosafac.afacbackend.DTO.NotasDTO;
+import cl.somosafac.afacbackend.entity.NotasEntity;
+import cl.somosafac.afacbackend.mapper.NotasMapper;
+import cl.somosafac.afacbackend.repository.NotaRepository;
+import cl.somosafac.afacbackend.service.NotasService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

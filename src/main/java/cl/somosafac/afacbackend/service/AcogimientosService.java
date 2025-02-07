@@ -1,6 +1,8 @@
 package cl.somosafac.afacbackend.service;
 
-import com.AFAC_BackEnd.AFAC.DTO.AcogimientosDTO;
+
+import cl.somosafac.afacbackend.DTO.AcogimientosDTO;
+
 import java.util.List;
 
 public interface AcogimientosService {

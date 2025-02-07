@@ -1,4 +1,4 @@
-package cl.somosafac.afacbackend.dto;
+package cl.somosafac.afacbackend.DTO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

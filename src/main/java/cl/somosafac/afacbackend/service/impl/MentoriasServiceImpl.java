@@ -1,10 +1,11 @@
 package cl.somosafac.afacbackend.service.impl;
 
-import com.AFAC_BackEnd.AFAC.DTO.MentoriasDTO;
-import com.AFAC_BackEnd.AFAC.entity.MentoriasEntity;
-import com.AFAC_BackEnd.AFAC.mapper.MentoriasMapper;
-import com.AFAC_BackEnd.AFAC.repository.MentoriaRepository;
-import com.AFAC_BackEnd.AFAC.service.MentoriasService;
+
+import cl.somosafac.afacbackend.DTO.MentoriasDTO;
+import cl.somosafac.afacbackend.entity.MentoriasEntity;
+import cl.somosafac.afacbackend.mapper.MentoriasMapper;
+import cl.somosafac.afacbackend.repository.MentoriaRepository;
+import cl.somosafac.afacbackend.service.MentoriasService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

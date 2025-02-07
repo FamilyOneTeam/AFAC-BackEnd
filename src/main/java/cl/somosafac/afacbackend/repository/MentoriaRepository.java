@@ -1,7 +1,8 @@
 
 package cl.somosafac.afacbackend.repository;
 
-import com.AFAC_BackEnd.AFAC.entity.MentoriasEntity;
+
+import cl.somosafac.afacbackend.entity.MentoriasEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

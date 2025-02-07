@@ -1,6 +1,8 @@
 package cl.somosafac.afacbackend.service;
 
-import com.AFAC_BackEnd.AFAC.DTO.NotasDTO;
+
+import cl.somosafac.afacbackend.DTO.NotasDTO;
+
 import java.util.List;
 
 public interface NotasService {

@@ -1,7 +1,7 @@
 package cl.somosafac.afacbackend.controller;
 
-import com.AFAC_BackEnd.AFAC.DTO.FichaInfanteDTO;
-import com.AFAC_BackEnd.AFAC.service.FichaInfanteService;
+import cl.somosafac.afacbackend.DTO.FichaInfanteDTO;
+import cl.somosafac.afacbackend.service.FichaInfanteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

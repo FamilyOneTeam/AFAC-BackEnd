@@ -1,8 +1,8 @@
 package cl.somosafac.afacbackend.mapper;
 
-import com.AFAC_BackEnd.AFAC.DTO.NotificacionesDTO;
-import com.AFAC_BackEnd.AFAC.entity.NotificacionesEntity;
-import com.AFAC_BackEnd.AFAC.entity.UsuarioEntity;
+
+import cl.somosafac.afacbackend.DTO.NotificacionesDTO;
+import cl.somosafac.afacbackend.entity.NotificacionesEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

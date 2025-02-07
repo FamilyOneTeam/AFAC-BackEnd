@@ -1,7 +1,8 @@
 package cl.somosafac.afacbackend.security;
 
-import com.AFAC_BackEnd.AFAC.entity.UsuarioEntity;
-import com.AFAC_BackEnd.AFAC.repository.UsuarioRepository;
+
+import cl.somosafac.afacbackend.entity.UsuarioEntity;
+import cl.somosafac.afacbackend.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

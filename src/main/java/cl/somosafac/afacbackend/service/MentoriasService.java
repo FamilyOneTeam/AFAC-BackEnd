@@ -1,6 +1,8 @@
 package cl.somosafac.afacbackend.service;
 
-import com.AFAC_BackEnd.AFAC.DTO.MentoriasDTO;
+
+import cl.somosafac.afacbackend.DTO.MentoriasDTO;
+
 import java.util.List;
 
 public interface MentoriasService {

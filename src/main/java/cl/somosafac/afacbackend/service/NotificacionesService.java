@@ -1,6 +1,8 @@
 package cl.somosafac.afacbackend.service;
 
-import com.AFAC_BackEnd.AFAC.DTO.NotificacionesDTO;
+
+import cl.somosafac.afacbackend.DTO.NotificacionesDTO;
+
 import java.util.List;
 
 public interface NotificacionesService {

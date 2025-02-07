@@ -1,6 +1,6 @@
 package cl.somosafac.afacbackend.repository;
 
-import com.AFAC_BackEnd.AFAC.entity.AcogimientosEntity;
+import cl.somosafac.afacbackend.entity.AcogimientosEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

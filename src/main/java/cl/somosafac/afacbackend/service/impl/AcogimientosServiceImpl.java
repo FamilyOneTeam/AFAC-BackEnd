@@ -1,10 +1,11 @@
 package cl.somosafac.afacbackend.service.impl;
 
-import com.AFAC_BackEnd.AFAC.DTO.AcogimientosDTO;
-import com.AFAC_BackEnd.AFAC.entity.AcogimientosEntity;
-import com.AFAC_BackEnd.AFAC.mapper.AcogimientosMapper;
-import com.AFAC_BackEnd.AFAC.repository.AcogimientoRepository;
-import com.AFAC_BackEnd.AFAC.service.AcogimientosService;
+
+import cl.somosafac.afacbackend.DTO.AcogimientosDTO;
+import cl.somosafac.afacbackend.entity.AcogimientosEntity;
+import cl.somosafac.afacbackend.mapper.AcogimientosMapper;
+import cl.somosafac.afacbackend.repository.AcogimientoRepository;
+import cl.somosafac.afacbackend.service.AcogimientosService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

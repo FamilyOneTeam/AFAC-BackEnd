@@ -1,9 +1,10 @@
 package cl.somosafac.afacbackend.security;
 
-import com.AFAC_BackEnd.AFAC.DTO.UsuarioDTO;
-import com.AFAC_BackEnd.AFAC.entity.UsuarioEntity;
-import com.AFAC_BackEnd.AFAC.mapper.UsuarioMapper;
-import com.AFAC_BackEnd.AFAC.repository.UsuarioRepository;
+
+import cl.somosafac.afacbackend.DTO.UsuarioDTO;
+import cl.somosafac.afacbackend.entity.UsuarioEntity;
+import cl.somosafac.afacbackend.mapper.UsuarioMapper;
+import cl.somosafac.afacbackend.repository.UsuarioRepository;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
