@@ -1,6 +1,5 @@
 package cl.somosafac.afacbackend.entity;
 
-
 import cl.somosafac.afacbackend.security.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,19 +27,36 @@ public class UsuarioEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private String apellido;
+
+    @Column(nullable = false, unique = true)
     private String correo;
+
+    @Column(nullable = false)
     private String contrasenaHash;
+
     private String cargo;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Role tipoUsuario;
 
+    @Column(nullable = false, columnDefinition = "boolean default true")
     private Boolean activo;
+
+    @Column(nullable = false, columnDefinition = "boolean default false")
     private Boolean verificado;
+
+    @Column(nullable = false)
     private LocalDateTime fechaRegistro;
+
     private LocalDateTime fechaUltimoAcceso;
+
+    @Column(nullable = false, columnDefinition = "boolean default false")
     private Boolean aceptarTerminos;
 
     @Column(name = "reset_token")
@@ -51,8 +67,32 @@ public class UsuarioEntity implements UserDetails {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "usuario_roles", joinColumns = @JoinColumn(name = "usuario_id"))
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
+
+    @PrePersist
+    protected void onCreate() {
+        if (fechaRegistro == null) {
+            fechaRegistro = LocalDateTime.now();
+        }
+        if (activo == null) {
+            activo = true;
+        }
+        if (verificado == null) {
+            verificado = false;
+        }
+        if (aceptarTerminos == null) {
+            aceptarTerminos = false;
+        }
+        if (roles == null) {
+            roles = new HashSet<>();
+        }
+        // Asegurar que el tipoUsuario esté en roles
+        if (tipoUsuario != null) {
+            roles.add(tipoUsuario);
+        }
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

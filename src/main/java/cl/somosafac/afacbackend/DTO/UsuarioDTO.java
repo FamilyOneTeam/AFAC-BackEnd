@@ -1,6 +1,5 @@
 package cl.somosafac.afacbackend.DTO;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -14,9 +13,15 @@ public class UsuarioDTO {
     @NotNull(message = "El ID no puede ser nulo")
     private Long id;
 
+    private String nombre;
+
+    private String apellido;
+
     @NotNull(message = "El correo es obligatorio")
     @Email(message = "El formato del correo no es válido")
     private String correo;
+
+    private String cargo;
 
     @NotNull(message = "El tipo de usuario es obligatorio")
     private String tipoUsuario;
@@ -34,7 +39,6 @@ public class UsuarioDTO {
 
     private Boolean aceptarTerminos;
 
-    //TODO aca hay un error relacionado a tipos role a string reparar
     @NotNull(message = "Los roles son obligatorios")
     private Set<String> roles;
 }

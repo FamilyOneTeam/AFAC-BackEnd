@@ -1,11 +1,9 @@
 package cl.somosafac.afacbackend.security;
 
-
 import cl.somosafac.afacbackend.DTO.UsuarioDTO;
 import cl.somosafac.afacbackend.entity.UsuarioEntity;
 import cl.somosafac.afacbackend.mapper.UsuarioMapper;
 import cl.somosafac.afacbackend.repository.UsuarioRepository;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
-
 
 @Service
 @RequiredArgsConstructor
@@ -28,21 +25,27 @@ public class AuthenticationService {
     public AuthResponse register(RegisterRequest request) {
         var usuario = UsuarioEntity.builder()
                 .correo(request.getCorreo())
+                .nombre(request.getNombre())
+                .apellido(request.getApellido())
                 .contrasenaHash(passwordEncoder.encode(request.getContrasenaHash()))
+                .cargo(request.getCargo())
                 .tipoUsuario(request.getTipoUsuario())
-                .activo(request.isActivo())
-                .verificado(request.isVerificado())
+                .activo(true)
+                .verificado(false)
                 .fechaRegistro(LocalDateTime.now())
-                .fechaUltimoAcceso(request.getFechaUltimoAcceso())
                 .aceptarTerminos(request.isAceptarTerminos())
                 .roles(new HashSet<>())
                 .build();
 
+        // Agregar el rol principal basado en el tipo de usuario
         usuario.getRoles().add(request.getTipoUsuario());
+
         var savedUser = usuarioRepository.save(usuario);
+        var token = jwtService.getToken(savedUser);
         UsuarioDTO usuarioDTO = usuarioMapper.toDTO(savedUser);
 
         return AuthResponse.builder()
+                .token(token)
                 .usuarioDTO(usuarioDTO)
                 .build();
     }
@@ -56,14 +59,23 @@ public class AuthenticationService {
         );
 
         var usuario = usuarioRepository.findByCorreo(request.getCorreo())
-                .orElseThrow();
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
         usuario.setFechaUltimoAcceso(LocalDateTime.now());
         usuarioRepository.save(usuario);
 
+        var token = jwtService.getToken(usuario);
         UsuarioDTO usuarioDTO = usuarioMapper.toDTO(usuario);
+
         return AuthResponse.builder()
+                .token(token)
                 .usuarioDTO(usuarioDTO)
                 .build();
+    }
+
+    public void validarCorreoUnico(String correo) {
+        if (usuarioRepository.findByCorreo(correo).isPresent()) {
+            throw new RuntimeException("El correo ya está registrado");
+        }
     }
 }
