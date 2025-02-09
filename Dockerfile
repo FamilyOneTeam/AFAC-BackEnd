@@ -7,4 +7,4 @@ ENV SERVER_PORT=8080
 
 
 # Command to run the application
-ENTRYPOINT ["java","-jar","somosafac-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","AFAC-0.0.1-SNAPSHOT.jar"]
