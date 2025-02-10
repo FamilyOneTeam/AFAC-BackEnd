@@ -210,16 +210,13 @@
 						<goals>
 							<goal>revision</goal>
 						</goals>
+						<phase>none</phase>
 					</execution>
 				</executions>
 				<configuration>
-					<generateGitPropertiesFile>true</generateGitPropertiesFile>
+					<generateGitPropertiesFile>false</generateGitPropertiesFile>
 					<failOnNoGitDirectory>false</failOnNoGitDirectory>
-					<includeOnlyProperties>
-						<includeOnlyProperty>^git.commit.id.*$</includeOnlyProperty>
-						<includeOnlyProperty>^git.branch$</includeOnlyProperty>
-						<includeOnlyProperty>^git.build.version$</includeOnlyProperty>
-					</includeOnlyProperties>
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 
