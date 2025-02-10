@@ -1,10 +1,24 @@
-FROM maven:3.9.9-eclipse-temurin-21-alpine as maven-builder
-# Copy the source code and pom.xml
-COPY ./target/AFAC-0.0.1-SNAPSHOT.jar  app.jar
+# Primera etapa: Build
+FROM eclipse-temurin:21-jdk-alpine as maven-builder
+
+WORKDIR /app
+COPY pom.xml .
+COPY src src
+COPY mvnw .
+COPY .mvn .mvn
+
+RUN chmod +x ./mvnw
+RUN ./mvnw clean package -DskipTests
+
+# Segunda etapa: Runtime
+FROM eclipse-temurin:21-jdk-alpine
+VOLUME /tmp
+
+# Copia el JAR desde la etapa de build
+COPY --from=maven-builder /app/target/AFAC-0.0.1-SNAPSHOT.jar app.jar
 
 # Set default environment variables
-ENV SERVER_PORT=8080
-
+ENV SERVER_PORT=8081
 
 # Command to run the application
 ENTRYPOINT ["java","-jar","app.jar"]
