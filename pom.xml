@@ -214,6 +214,7 @@
 				</executions>
 				<configuration>
 					<generateGitPropertiesFile>true</generateGitPropertiesFile>
+					<failOnNoGitDirectory>false</failOnNoGitDirectory>
 					<includeOnlyProperties>
 						<includeOnlyProperty>^git.commit.id.*$</includeOnlyProperty>
 						<includeOnlyProperty>^git.branch$</includeOnlyProperty>
