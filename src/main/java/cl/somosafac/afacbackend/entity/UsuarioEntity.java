@@ -45,19 +45,25 @@ public class UsuarioEntity implements UserDetails {
     @Column(nullable = false)
     private Role tipoUsuario;
 
-    @Column(nullable = false, columnDefinition = "boolean default true")
-    private Boolean activo;
+    @Column(nullable = false)
+    private Boolean activo = true;
 
-    @Column(nullable = false, columnDefinition = "boolean default false")
-    private Boolean verificado;
+    @Column(nullable = false)
+    private Boolean verificado = false;
 
     @Column(nullable = false)
     private LocalDateTime fechaRegistro;
 
     private LocalDateTime fechaUltimoAcceso;
 
-    @Column(nullable = false, columnDefinition = "boolean default false")
-    private Boolean aceptarTerminos;
+    @Column(nullable = false)
+    private Boolean aceptarTerminos = false;
+
+    @Column(name = "verification_token")
+    private String verificationToken;
+
+    @Column(name = "verification_token_expiry")
+    private LocalDateTime verificationTokenExpiry;
 
     @Column(name = "reset_token")
     private String resetToken;
@@ -73,22 +79,10 @@ public class UsuarioEntity implements UserDetails {
 
     @PrePersist
     protected void onCreate() {
-        if (fechaRegistro == null) {
-            fechaRegistro = LocalDateTime.now();
-        }
-        if (activo == null) {
-            activo = true;
-        }
-        if (verificado == null) {
-            verificado = false;
-        }
-        if (aceptarTerminos == null) {
-            aceptarTerminos = false;
-        }
+        fechaRegistro = LocalDateTime.now();
         if (roles == null) {
             roles = new HashSet<>();
         }
-        // Asegurar que el tipoUsuario esté en roles
         if (tipoUsuario != null) {
             roles.add(tipoUsuario);
         }
@@ -97,13 +91,12 @@ public class UsuarioEntity implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();
-        // Agregar autoridades basadas en roles
         if (roles != null) {
             authorities.addAll(roles.stream()
-                    .map(role -> new SimpleGrantedAuthority(role.name()))
+                    .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
                     .collect(Collectors.toSet()));
         }
-        // Agregar autoridad basada en tipoUsuario
+        // Agregar el tipo de usuario como autoridad
         if (tipoUsuario != null) {
             authorities.add(new SimpleGrantedAuthority(tipoUsuario.name()));
         }
@@ -127,7 +120,7 @@ public class UsuarioEntity implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return activo != null && activo;
+        return activo;
     }
 
     @Override
@@ -137,6 +130,15 @@ public class UsuarioEntity implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return verificado != null && verificado;
+        return activo && verificado;
+    }
+
+    // Métodos helper
+    public boolean isVerified() {
+        return verificado;
+    }
+
+    public boolean isActive() {
+        return activo;
     }
 }
