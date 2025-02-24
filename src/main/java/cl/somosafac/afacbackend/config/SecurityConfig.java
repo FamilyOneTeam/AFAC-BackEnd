@@ -1,17 +1,20 @@
 package cl.somosafac.afacbackend.config;
 
-import cl.somosafac.afacbackend.repository.UsuarioRepository;
+
 import cl.somosafac.afacbackend.security.JwtAuthenticationFilter;
 import cl.somosafac.afacbackend.security.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+
+
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,6 +27,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 import java.util.Collections;
+
 
 @Configuration
 @EnableWebSecurity
@@ -41,22 +45,28 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
                         // Endpoints públicos
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/auth/login").permitAll()
-                        .requestMatchers("/api/usuarios/registro").permitAll()
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers(
+                                "/api/auth/**",                // Auth endpoints (login, registro, verificación)
+                                "/api/auth/verify/**",         // Verificación de cuenta
+                                "/api/auth/password/**",       // Reset de contraseña
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**"
+                        ).permitAll()
 
                         // Endpoints protegidos por rol ADMIN
-                        .requestMatchers("/api/usuarios/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/familias/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/email/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/mentorias/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/voluntarios/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/contactos/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/notas/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/notificaciones/**").hasAuthority("ADMIN")
+                        .requestMatchers(
+                                "/api/admin/**",              // Nueva ruta para endpoints admin
+                                "/api/usuarios/**",
+                                "/api/familias/**",
+                                "/api/email/**",
+                                "/api/mentorias/**",
+                                "/api/voluntarios/**",
+                                "/api/contactos/**",
+                                "/api/notas/**",
+                                "/api/notificaciones/**"
+                        ).hasAuthority("ADMIN")
 
-                        // Cualquier otra solicitud requiere autenticación
+                        // Endpoints que requieren usuario verificado
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session ->
@@ -72,15 +82,12 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(
-                "http://localhost:3000",
-                "https://afac-backend.onrender.com",
-                "http://localhost:8080"
-        ));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setAllowCredentials(true);
+        configuration.setAllowedOrigins(Collections.singletonList("*")); // Permite cualquier origen
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("*")); // Permite cualquier header
+        configuration.setExposedHeaders(Arrays.asList("*")); // Expone todos los headers
         configuration.setMaxAge(3600L);
+        configuration.setAllowCredentials(false); // Debe ser false cuando se usa allowedOrigins="*"
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
