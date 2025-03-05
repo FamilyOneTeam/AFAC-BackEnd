@@ -1,24 +1,17 @@
-# Primera etapa: Build
-FROM eclipse-temurin:21-jdk-alpine as maven-builder
-
+# Build stage
+FROM maven:3.9.6-eclipse-temurin-21-jammy AS build
 WORKDIR /app
-COPY pom.xml .
-COPY src src
-COPY mvnw .
-COPY .mvn .mvn
 COPY . .
-RUN chmod +x ./mvnw
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
-# Segunda etapa: Runtime
-FROM eclipse-temurin:21-jdk-alpine
+# Run stage
+FROM eclipse-temurin:21-jre-jammy
+WORKDIR /app
+COPY --from=build /app/target/AFAC-0.0.1-SNAPSHOT.jar app.jar
 
-# Copia el JAR desde la etapa de build
-COPY --from=maven-builder /app/target/AFAC-0.0.1-SNAPSHOT.jar app.jar
-
-# Set default environment variables
+# Environment variables
 ENV SERVER_PORT=8081
 ENV SPRING_PROFILES_ACTIVE=prod
 
-# Command to run the application
-ENTRYPOINT ["java","-jar","app.jar"]
+# Command
+CMD ["java", "-jar", "app.jar"]
