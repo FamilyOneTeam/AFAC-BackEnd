@@ -4,9 +4,9 @@ builder = "nixpacks"
 
 [deploy]
 startCommand = "java -jar target/*.jar"
-healthcheckPath = "/actuator/health"
-healthcheckTimeout = 600
-healthcheckInterval = 30
+healthcheckPath = "/actuator/health/liveness"
+healthcheckTimeout = 180
+healthcheckInterval = 15
 restartPolicyType = "on_failure"
 sleepApplication = true
 sleepMode = "idle"
@@ -14,4 +14,7 @@ idleTimeout = "1h"
 
 [service]
 internal_port = 8081
-port = 8081 
+port = 8081
+
+[variables]
+SPRING_PROFILES_ACTIVE = "prod" 
