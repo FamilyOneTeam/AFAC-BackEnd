@@ -82,12 +82,25 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("*")); // Permite cualquier origen
+        // Permitir dominios específicos - ajusta esto cuando tengas tu dominio de Vercel
+        configuration.setAllowedOrigins(Arrays.asList(
+            "http://localhost:5173",    // Vite dev server
+            "http://localhost:3000",    // Alternativo para desarrollo
+            "https://*.vercel.app"      // Dominios de Vercel
+        ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*")); // Permite cualquier header
-        configuration.setExposedHeaders(Arrays.asList("*")); // Expone todos los headers
+        configuration.setAllowedHeaders(Arrays.asList(
+            "Authorization",
+            "Content-Type",
+            "X-Requested-With",
+            "Accept",
+            "Origin",
+            "Access-Control-Request-Method",
+            "Access-Control-Request-Headers"
+        ));
+        configuration.setExposedHeaders(Arrays.asList("Authorization", "Content-Disposition"));
         configuration.setMaxAge(3600L);
-        configuration.setAllowCredentials(false); // Debe ser false cuando se usa allowedOrigins="*"
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
