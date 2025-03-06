@@ -1,19 +1,31 @@
 # Build stage
-FROM maven:3.9.6-eclipse-temurin-21-jammy AS build
+FROM maven:3.9.9-eclipse-temurin-21-alpine AS maven-builder
+
+# Set working directory
 WORKDIR /app
-COPY pom.xml .
+
+# Copy the source code and pom.xml
 COPY src ./src
+COPY pom.xml .
+
+# Build the application
 RUN mvn clean package -DskipTests
 
 # Run stage
-FROM eclipse-temurin:21-jre-jammy
-WORKDIR /app
-COPY --from=build /app/target/AFAC-0.0.1-SNAPSHOT.jar ./app.jar
+FROM openjdk:21-jdk-slim
+
+# Set working directory
+WORKDIR /app-service
+
+# Copy the built JAR file
+COPY --from=maven-builder /app/target/*.jar ./app.jar
 
 # Environment variables
 ENV SERVER_PORT=8081
 ENV SPRING_PROFILES_ACTIVE=prod
 
-# Command
+# Expose the port
 EXPOSE 8081
+
+# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
