@@ -7,19 +7,26 @@ healthcheckPath = "/actuator/health/liveness"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
 numReplicas = 1
-sleepApplication = true
+sleepApplication = false
 restartPolicyMaxRetries = 10
 
 [deploy.healthcheck]
 path = "/actuator/health/liveness"
-interval = "15s"
+interval = "30s"
 timeout = "10s"
-retries = 3
-startPeriod = "30s"
+retries = 5
+startPeriod = "60s"
 
 [service]
 internal_port = 8081
 port = 8081
+
+[env]
+RAILWAY_ENVIRONMENT = "production"
+
+[[plugins]]
+name = "postgresql"
+auto_apply = true
 
 [variables]
 PORT = "8081"
