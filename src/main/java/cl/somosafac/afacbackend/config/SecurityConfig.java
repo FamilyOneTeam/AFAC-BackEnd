@@ -86,7 +86,10 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(Arrays.asList(
             "http://localhost:5173",    // Vite dev server
             "http://localhost:3000",    // Alternativo para desarrollo
-            "https://*.vercel.app"      // Dominios de Vercel
+            "https://afac.netlify.app", // Dominio específico en Netlify
+            "https://*.netlify.app",      // Panel de administración en Vercel
+            "https://somosafac.cl",               // Dominio principal
+            "https://admin.somosafac.cl"          // Subdominio de administración
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList(
