@@ -42,6 +42,7 @@ public class UsuarioService {
         usuario.setFechaRegistro(LocalDateTime.now());
         usuario.setActivo(true);
         usuario.setVerificado(false);
+        usuario.setAceptarTerminos(false);
 
         // Encriptar la contraseña
         usuario.setContrasenaHash(passwordEncoder.encode(usuario.getContrasenaHash()));

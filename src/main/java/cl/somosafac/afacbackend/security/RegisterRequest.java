@@ -49,7 +49,8 @@ public class RegisterRequest {
 
     private LocalDateTime fechaUltimoAcceso;
 
-    private boolean aceptarTerminos;
+    @Builder.Default
+    private boolean aceptarTerminos = false;
 
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = Role.valueOf(tipoUsuario.toUpperCase());

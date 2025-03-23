@@ -45,7 +45,7 @@ public class AuthenticationService {
                 .activo(true)
                 .verificado(false)
                 .fechaRegistro(LocalDateTime.now())
-                .aceptarTerminos(request.isAceptarTerminos())
+                .aceptarTerminos(false)
                 .roles(new HashSet<>())
                 .build();
 
@@ -125,5 +125,34 @@ public class AuthenticationService {
             log.warn("Intento de registro con correo existente: {}", correo);
             throw new RuntimeException("El correo ya está registrado");
         }
+    }
+
+    @Transactional
+    public void cambiarContrasena(String correo, ChangePasswordRequest request) {
+        // Buscar usuario
+        UsuarioEntity usuario = usuarioRepository.findByCorreo(correo)
+                .orElseThrow(() -> {
+                    log.warn("Intento de cambio de contraseña con correo no existente: {}", correo);
+                    throw new RuntimeException("Usuario no encontrado");
+                });
+
+        // Verificar contraseña actual
+        if (!passwordEncoder.matches(request.getCurrentPassword(), usuario.getContrasenaHash())) {
+            log.warn("Intento de cambio de contraseña con contraseña incorrecta para usuario: {}", correo);
+            throw new BadCredentialsException("Contraseña actual incorrecta");
+        }
+
+        // Verificar que aceptó los términos
+        if (Boolean.FALSE.equals(request.getAceptarTerminos())) {
+            log.warn("Intento de cambio de contraseña sin aceptar términos para usuario: {}", correo);
+            throw new RuntimeException("Debe aceptar los términos y condiciones");
+        }
+
+        // Actualizar contraseña y aceptar términos
+        usuario.setContrasenaHash(passwordEncoder.encode(request.getNewPassword()));
+        usuario.setAceptarTerminos(true);
+        usuarioRepository.save(usuario);
+
+        log.info("Contraseña actualizada exitosamente para usuario: {}", correo);
     }
 }
