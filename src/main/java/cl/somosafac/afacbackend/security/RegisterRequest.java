@@ -55,4 +55,29 @@ public class RegisterRequest {
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = Role.valueOf(tipoUsuario.toUpperCase());
     }
+
+    // Manual getters for Lombok compatibility issue
+    public String getCorreo() {
+        return correo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getContrasenaHash() {
+        return contrasenaHash;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public Role getTipoUsuario() {
+        return tipoUsuario;
+    }
 }
