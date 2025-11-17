@@ -26,4 +26,14 @@ public class NotificacionesEntity {
     private String mensaje;
     private LocalDateTime fechaEnvio;
     private String tipoNotificacion;
+
+    // Manual getters/setters for Lombok compatibility issue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

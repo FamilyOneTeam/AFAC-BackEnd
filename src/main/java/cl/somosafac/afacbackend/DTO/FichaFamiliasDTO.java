@@ -68,4 +68,14 @@ public class FichaFamiliasDTO {
     @JsonProperty("fechaInicioAcogimiento")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime fechaInicioAcogimiento;
+
+    // Manual getters/setters for Lombok compatibility issue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

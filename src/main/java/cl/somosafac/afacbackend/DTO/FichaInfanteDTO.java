@@ -48,4 +48,14 @@ public class FichaInfanteDTO {
 
     @JsonProperty("ingresoAfac")
     private Double ingresoAfac;
+
+    // Manual getters/setters for Lombok compatibility issue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

@@ -1,6 +1,11 @@
 package cl.somosafac.afacbackend.controller;
 
 import org.springframework.http.ResponseEntity;
+import cl.somosafac.afacbackend.security.AuthenticationService;
+import cl.somosafac.afacbackend.security.JwtService;
+import cl.somosafac.afacbackend.security.RegisterRequest;
+import cl.somosafac.afacbackend.security.AuthResponse;
+import cl.somosafac.afacbackend.security.ChangePasswordRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

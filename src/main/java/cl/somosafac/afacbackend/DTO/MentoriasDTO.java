@@ -24,4 +24,14 @@ public class MentoriasDTO {
 
     @JsonProperty("estadoMentoria")
     private String estadoMentoria;
+
+    // Manual getters/setters for Lombok compatibility issue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

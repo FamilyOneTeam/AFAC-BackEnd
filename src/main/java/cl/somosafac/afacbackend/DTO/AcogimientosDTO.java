@@ -28,4 +28,14 @@ public class AcogimientosDTO {
 
     @JsonProperty("estadoAcogimiento")
     private String estadoAcogimiento;
+
+    // Manual getters/setters for Lombok compatibility issue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }
