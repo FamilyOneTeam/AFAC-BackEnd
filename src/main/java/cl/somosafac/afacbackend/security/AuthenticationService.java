@@ -20,6 +20,7 @@ import java.util.HashSet;
 @RequiredArgsConstructor
 @Slf4j
 public class AuthenticationService {
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AuthenticationService.class);
     private final UsuarioRepository usuarioRepository;
     private final UsuarioMapper usuarioMapper;
     private final PasswordEncoder passwordEncoder;

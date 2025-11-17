@@ -19,4 +19,13 @@ public class LoginRequest {
 
     @NotEmpty(message = "Por favor, ingrese su contraseña")
     String contrasenaHash;
+
+    // Manual getters for Lombok compatibility issue
+    public String getCorreo() {
+        return correo;
+    }
+
+    public String getContrasenaHash() {
+        return contrasenaHash;
+    }
 }

@@ -31,4 +31,14 @@ public class NotificacionesDTO {
     @JsonProperty("tipoNotificacion")
     @NotNull(message = "El tipo de notificación no puede ser nulo")
     private String tipoNotificacion;
+
+    // Manual getters/setters for Lombok compatibility issue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

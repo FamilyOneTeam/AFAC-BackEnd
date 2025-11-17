@@ -141,4 +141,41 @@ public class UsuarioEntity implements UserDetails {
     public boolean isActive() {
         return activo;
     }
+
+    // Manual getters/setters for Lombok compatibility issue
+    public String getCorreo() {
+        return correo;
+    }
+
+    public String getContrasenaHash() {
+        return contrasenaHash;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setFechaUltimoAcceso(LocalDateTime fechaUltimoAcceso) {
+        this.fechaUltimoAcceso = fechaUltimoAcceso;
+    }
+
+    public void setAceptarTerminos(Boolean aceptarTerminos) {
+        this.aceptarTerminos = aceptarTerminos;
+    }
+
+    public void setContrasenaHash(String contrasenaHash) {
+        this.contrasenaHash = contrasenaHash;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
